@@ -3,6 +3,8 @@ import requests
 import time
 from bs4 import BeautifulSoup
 import re
+import sys
+import io
 
 def main(argv):
     header = argv[1]
@@ -26,7 +28,9 @@ def main(argv):
             docID = str(body[1]).split('/')
             page2 = requests.get("http://archiveofourown.org/" + body[1] + "?view_adult=true&view_full_work=true")
             filename = str(docID[2]) + '.html'
+            #Is encoding only in Python 3?
             f = open(filename,'w', encoding='UTF')
+
             f.write(str(page2.text))
             f.close()
             print("reached document " + str(docID[2]) + " on page " + str(end))
