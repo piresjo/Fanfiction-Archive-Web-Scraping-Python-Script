@@ -1,3 +1,14 @@
 #'Archive Of Our Own' Scraper Tool
 
-This tool is built to retrieve the full body of works from any fandom on the fanfiction site 'archiveofourown.org'. In its default implementation, it scrapes the works of the 'Star Wars : The Force Awakens' fandom, but the user can choose any fandom they wish by simply replacing the "header" variable in the parser.py file with the url for the first page of their desired fandom. To use, simply run parser.py in any interactive Python environment. 
+This tool is built to retrieve the full body of works from any fandom on the fanfiction site 'archiveofourown.org'.
+
+Running it requires some arguments. For example:
+
+`Python3 parser.py "text value" -s -t "dir"`
+
+* "text value" represents the link to all the works in a tag, the tag itself, or a possible tag to search for alternatives, depending on the flags
+* "-s" determines if you want to search for possible alternate tags
+* "-t" determines if you want to get works based off the tag you put in
+* "dir" represents the directory you want the scraped works to go
+
+Only runs using Python 3. Make sure Python 3 is installed on your system, and if Python 3 isn't the default version, run as Python3 in the shell
