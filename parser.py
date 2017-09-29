@@ -9,15 +9,22 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Parse Fanfiction')
 parser.add_argument('header', type=str, nargs=1, help="header to actually scrape the files")
-#parser.add_argument('-s', action='store_true', help='determine if we need to search for an actual header')
+parser.add_argument('-t', action='store_true', help="if you don't know the header, but know what to look for")
+parser.add_argument('-s', action='store_true', help='determine if we need to search for an actual header')
 parser.add_argument('targetdir', type=str, nargs=1, help="place to put the scraped files")
 args = parser.parse_args()
 argv = vars(args)
+print(argv)
 
 header = argv['header'][0]
 targetDir = argv['targetdir'][0]
+searchVal = argv['s']
+tagVal = argv['t']
 myArray = []
 resultList = ["start"]
+
+if tagVal and searchVal:
+	raise ValueError()
 
 # header =
 # "http://archiveofourown.org/tags/Star%20Wars%20Episode%20VII:%20The%20Force%20Awakens%20(2015)/works?page="
@@ -28,6 +35,9 @@ end = 1
 os.chdir(targetDir)
 
 while (len(resultList)) != 0:
+	if tagVal:
+		modHeaderVal = header.replace(' ', '%20')
+		header = "http://archiveofourown.org/tags/" + modHeaderVal + "/works?page="
 	page1 = requests.get(header + str(end))
 	soup1 = BeautifulSoup(page1.text, "lxml")
 	resultList = soup1(attrs={'href': re.compile('.*works/[0-9]+[0-9]$')})
