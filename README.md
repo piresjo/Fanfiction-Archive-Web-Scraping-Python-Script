@@ -12,3 +12,7 @@ Running it requires some arguments. For example:
 * "dir" represents the directory you want the scraped works to go
 
 Only runs using Python 3. Make sure Python 3 is installed on your system, and if Python 3 isn't the default version, run as Python3 in the shell
+
+---
+
+Finalizing Notes: I'm pretty sure that this was handed over and finished by Anna last year, but I have this still in my repo. I'm handing it over to you.
